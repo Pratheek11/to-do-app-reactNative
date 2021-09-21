@@ -2,7 +2,12 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Task = (props) => {
+  // we access the text to be rendered , dark mode, and task completion function throught the props and using it
+  // in the component makes it resuable
   return (
+    // taking  dark mode enabled as state , and obtained through props
+    // accessing it we enable backgroundColor and text color according to
+    // user prefered mode
     <View
       style={[
         styles.container,
@@ -13,6 +18,8 @@ const Task = (props) => {
         <View style={styles.square}></View>
         <Text style={styles.header}>{props.text}</Text>
       </View>
+      {/* we pass index to the complete task function as to make a particular task remove from the list as
+      it has been completed. */}
       <TouchableOpacity
         onPress={() => props.handelCompletedTask(props.index)}
         style={styles.circular}
@@ -20,6 +27,7 @@ const Task = (props) => {
     </View>
   );
 };
+// we use inline stylesheet for css to style our tags,items,etc
 const styles = StyleSheet.create({
   container: {
     display: "flex",
